@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import CryptoJS from 'crypto-js';
 
-const secretKey = 'VDvl9V1Cu8K7OeoV6wDNjxucmSfDcY7r'; // Must be 32 bytes long
+const secretKey = process.env.REACT_SECRET_KEY;
 
 const encryptData = (data:any) => {
   const iv = CryptoJS.lib.WordArray.random(16);

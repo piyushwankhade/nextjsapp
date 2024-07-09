@@ -4,10 +4,11 @@ import { useEffect, useState } from 'react';
 import { useRouter,useSearchParams  } from 'next/navigation';
 import CryptoJS from 'crypto-js';
 
-const secretKey = 'VDvl9V1Cu8K7OeoV6wDNjxucmSfDcY7r'; // Must be the same key and 32 bytes long
+const secretKey = process.env.REACT_SECRET_KEY;
 
 const decryptData = (data:any) => {
   const [iv, encrypted] = data.split(':');
+  console.log(secretKey)
   const decrypted = CryptoJS.AES.decrypt(encrypted, CryptoJS.enc.Utf8.parse(secretKey), {
     iv: CryptoJS.enc.Hex.parse(iv),
     padding: CryptoJS.pad.Pkcs7,
